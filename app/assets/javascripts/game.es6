@@ -28,7 +28,7 @@ class Map {
   }
 
   draw() {
-    this.current_sequence += 1
+    this.current_sequence += 0.2
     return this.first_map.map((row) => '<div class="row">' + this.drawRow(row) + '</div>').join('')
   }
 
@@ -42,7 +42,7 @@ class Map {
       if (this.current_sequence >= this_tile.animation.length) {
         this.current_sequence = 1
       }
-      return '<div class="tile ' + this_tile.class + this.current_sequence + '"></div>'
+      return '<div class="tile ' + this_tile.class + Math.round(this.current_sequence) + '"></div>'
     } else {
       return '<div class="tile ' + this_tile.class + '"></div>'
     }
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
     setTimeout(function() {
       requestAnimationFrame(draw);
         $('[data-hook="game"]').html(game_map.draw())
-    }, 1000 / 15);
+    }, 1000 / 60);
   }
   draw()
 });
